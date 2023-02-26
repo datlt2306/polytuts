@@ -76,6 +76,12 @@ const config = {
                         position: "left",
                         label: "Javascript",
                     },
+                    {
+                        type: "docSidebar",
+                        sidebarId: "reactjs",
+                        position: "left",
+                        label: "Reactjs",
+                    },
                     { to: "/blog", label: "Blog", position: "left" },
                     {
                         href: "https://github.com/facebook/docusaurus",
