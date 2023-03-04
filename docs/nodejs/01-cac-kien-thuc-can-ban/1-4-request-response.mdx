@@ -1,0 +1,63 @@
+---
+sidebar_position: 4
+title: "Request và Response"
+---
+
+Trong Node.js, một ứng dụng web thường sẽ nhận các yêu cầu từ client (request) và trả về phản hồi cho client (response). Việc xử lý các yêu cầu và phản hồi là cốt lõi của một ứng dụng web, và Node.js cung cấp các API để thực hiện điều này.
+
+<img
+    style={{ width: "100%", height: "auto" }}
+    src="https://res.cloudinary.com/practicaldev/image/fetch/s--KI6BAhvi--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2efhol0cof1mhkerg8xl.jpg"
+/>
+
+## Request trong Node.js
+
+Trong Node.js, một request là một đối tượng (object) của lớp http.IncomingMessage. Đối tượng này chứa tất cả các thông tin về yêu cầu, bao gồm URL, phương thức (method), headers và body.
+
+Ví dụ, để truy cập thông tin URL của yêu cầu, bạn có thể sử dụng thuộc tính url của đối tượng request:
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    console.log("Request URL:", req.url);
+    res.end("Hello World!");
+});
+
+server.listen(3000);
+```
+
+Trong đoạn mã trên, chúng ta tạo một server HTTP bằng cách sử dụng hàm http.createServer(). Trong callback của hàm này, chúng ta truy cập đối tượng request thông qua tham số đầu tiên (được gọi là req). Chúng ta sử dụng thuộc tính url của đối tượng này để lấy URL của yêu cầu.
+
+## Response trong Node.js
+
+Trong Node.js, một response là một đối tượng (object) của lớp http.ServerResponse. Đối tượng này chứa các phương thức để gửi phản hồi cho client, bao gồm cả header và body của phản hồi.
+
+Ví dụ, để gửi một phản hồi đơn giản chứa chuỗi "Hello World!", bạn có thể sử dụng phương thức res.end():
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.end("Hello World!");
+});
+
+server.listen(3000);
+```
+
+Trong đoạn mã trên, chúng ta sử dụng phương thức res.end() để gửi chuỗi "Hello World!" làm body của phản hồi.
+
+Bạn cũng có thể sử dụng các phương thức khác của đối tượng response để thiết lập các header của phản hồi. Ví dụ, để thiết lập header Content-Type là text/html, bạn có thể sử dụng phương thức res.setHeader():
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.setHeader("Content-Type", "text/html");
+    res.end("<h1>Hello World!</h1>");
+});
+
+server.listen(3000);
+```
+
+Trong đoạn mã trên, chúng ta sử dụng phương thức res.setHeader() để thiết lập header Content-Type là text/html. Sau đó, chúng ta sử dụng phương thức res.end() để gửi chuỗi "Hello World!" làm body của phản hồi.
