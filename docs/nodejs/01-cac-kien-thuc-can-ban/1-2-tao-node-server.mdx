@@ -1,0 +1,57 @@
+---
+sidebar_position: 2
+title: Tạo Node Server
+---
+
+import BrowserWindow from "@site/src/components/BrowserWindow";
+import CodeBlock from "@theme/CodeBlock";
+
+Một ví dụ khác để hiểu rõ hơn về Node.js là tạo một máy chủ web đơn giản.
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/plain");
+    res.end("Hello, world!");
+});
+
+server.listen(8080, () => {
+    console.log("Server running on port 8080");
+});
+```
+
+Đoạn mã sau đây tạo một máy chủ web đơn giản trên cổng 8080 và trả về chuỗi "Hello, world!" khi truy cập vào địa chỉ http://localhost:8080.
+
+<BrowserWindow url="http://localhost:8080">Hello, world!</BrowserWindow>
+
+**Giải thích cho đoạn mã trên**:
+
+-   Import module http bằng cách sử dụng lệnh require, Điều này cho phép chúng ta sử dụng các phương thức được cung cấp bởi module **http** trong Node.js.
+
+```js
+const http = require("http");
+```
+
+-   Tạo một server HTTP bằng cách sử dụng phương thức **createServer** của module http. Server sẽ trả về một response với mã trạng thái 200 và header Content-Type là text/plain. Nội dung của response là chuỗi 'Hello, world!'.
+
+```js
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/plain");
+    res.end("Hello, world!");
+});
+```
+
+-   Khởi động server và lắng nghe các kết nối đến từ client bằng cách sử dụng phương thức listen của đối tượng server. Server sẽ lắng nghe các kết nối đến trên cổng 8080 và khi có một kết nối đến, server sẽ ghi log "Server running on port 8080".
+
+```js
+server.listen(8080, () => {
+    console.log("Server running on port 8080");
+});
+```
+
+-   Khi server nhận được một request từ client, nó sẽ gửi một response trả về cho client. Trong ví dụ này, response trả về chỉ đơn giản là chuỗi "Hello, world!".
+
+Trên đây là một số ví dụ đơn giản để giúp bạn bắt đầu với Node.js. Với những ví dụ đơn giản này, bạn có thể nắm được cách hoạt động của Node.js và bắt đầu phát triển các ứng dụng web hoặc các ứng dụng khác trên Node.js.

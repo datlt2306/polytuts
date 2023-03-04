@@ -1,0 +1,72 @@
+---
+sidebar_position: 3
+title: "Vòng đời Nodejs & Event Loop"
+---
+
+Node.js là một nền tảng phát triển ứng dụng được xây dựng trên engine V8 của Google, cho phép viết mã JavaScript ngoài trình duyệt. Vòng đời Node.js được xem là một chu trình vô tận, bao gồm các giai đoạn và sự kiện quan trọng để giúp Node.js hoạt động một cách hiệu quả.
+
+Dưới đây là các giai đoạn và sự kiện quan trọng trong vòng đời Node.js:
+
+## Khởi tạo
+
+Giai đoạn khởi tạo của Node.js là giai đoạn đầu tiên khi một ứng dụng Node.js được khởi chạy. Trong giai đoạn này, Node.js sẽ bắt đầu bằng việc tải các module cơ bản cần thiết cho ứng dụng và thiết lập các biến môi trường như process.env để cung cấp cho ứng dụng môi trường thích hợp để chạy. Các module cơ bản này bao gồm các module được cài đặt sẵn của Node.js và các module bên thứ ba được liệt kê trong file package.json.
+
+Trong giai đoạn khởi tạo, Node.js sẽ xác định các tùy chọn runtime được cung cấp khi khởi động ứng dụng và sẽ thực hiện các cấu hình cần thiết để khởi tạo môi trường thích hợp cho ứng dụng chạy.
+
+> Tóm lại, giai đoạn khởi tạo là giai đoạn đầu tiên khi ứng dụng Node.js được khởi chạy, trong đó Node.js tải các module cơ bản và thiết lập các biến môi trường cần thiết để cung cấp môi trường thích hợp cho ứng dụng chạy.
+
+## Chạy mã
+
+Giai đoạn Chạy mã trong Node.js là quá trình thực thi các câu lệnh JavaScript trong file. Đây là giai đoạn quan trọng nhất trong vòng đời của Node.js vì nó là khi ứng dụng Node.js bắt đầu thực sự hoạt động.
+
+Trong giai đoạn này, Node.js sẽ thực thi các lệnh JavaScript như định nghĩa hàm, khai báo biến hoặc gọi hàm. Nếu trong quá trình thực thi, có bất kỳ lỗi cú pháp nào, Node.js sẽ hiển thị thông báo lỗi và dừng lại.
+
+Khi thực thi mã, Node.js sử dụng mô hình xử lý bất đồng bộ (asynchronous processing model) để đảm bảo hiệu suất cao và tăng khả năng đáp ứng của ứng dụng. Thay vì chờ đợi một tác vụ hoàn thành trước khi bắt đầu tác vụ tiếp theo, Node.js sẽ tiếp tục thực thi các tác vụ khác trong khi đợi các tác vụ bất đồng bộ hoàn thành.
+
+> Tóm lại, giai đoạn Chạy mã trong Node.js là quá trình thực thi các câu lệnh JavaScript trong file. Nếu có lỗi cú pháp, Node.js sẽ dừng lại và hiển thị thông báo lỗi. Khi thực thi, Node.js sử dụng mô hình xử lý bất đồng bộ để tăng hiệu suất và khả năng đáp ứng của ứng dụng.
+
+## Chạy Event Loop
+
+Event Loop là một khái niệm quan trọng trong Node.js, nó giúp Node.js xử lý các sự kiện và callback trong ứng dụng một cách hiệu quả và không chặn đường chạy của ứng dụng.
+
+Sau khi mã JavaScript được chạy, Event Loop sẽ bắt đầu hoạt động. Event Loop sẽ liên tục kiểm tra xem có sự kiện mới nào cần được xử lý hay không. Nếu có sự kiện, Event Loop sẽ lấy sự kiện đó ra khỏi hàng đợi và thực thi callback của nó. Callback là một hàm được gọi khi sự kiện xảy ra. Khi callback được thực thi xong, Event Loop sẽ tiếp tục kiểm tra và xử lý các sự kiện tiếp theo trong hàng đợi.
+
+Event Loop giúp Node.js xử lý các sự kiện bất đồng bộ một cách hiệu quả và tránh tình trạng chặn đường chạy của ứng dụng. Vì vậy, Node.js thường được sử dụng để xây dựng các ứng dụng phức tạp và có khả năng mở rộng cao.
+
+## Chạy callback
+
+Sau khi Event Loop đã được kích hoạt, các hàm callback sẽ được thêm vào hàng đợi (queue) của nó. Hàng đợi này sẽ được xử lý theo thứ tự đợi đến lượt, nghĩa là callback được thêm vào trước sẽ được thực thi trước.
+
+Các hàm callback được thêm vào queue khi có sự kiện xảy ra, ví dụ như khi kết nối cơ sở dữ liệu hoặc khi yêu cầu HTTP được nhận. Khi sự kiện xảy ra, Node.js sẽ thực thi callback được gắn với sự kiện đó, sau đó quay trở lại Event Loop để tiếp tục xử lý các sự kiện khác trong hàng đợi.
+
+Quá trình này tiếp diễn cho đến khi tất cả các hàm callback trong hàng đợi được thực thi. Nếu trong quá trình này có lỗi xảy ra, Node.js sẽ gửi thông báo lỗi đến console để cho người lập trình có thể sửa lỗi. Sau khi hàng đợi callback được xử lý xong, Event Loop sẽ chờ đợi để thêm các hàm callback mới vào queue và quá trình này sẽ tiếp tục lặp lại.
+
+## Chạy Timers
+
+Giai đoạn Chạy Timers là giai đoạn quan trọng trong vòng đời Node.js. Node.js hỗ trợ các hàm setTimeout và setInterval để thực thi một chức năng sau một khoảng thời gian nhất định hoặc lặp lại sau một khoảng thời gian. Khi gọi các hàm này, Node.js sẽ thêm chúng vào hàng đợi của Event Loop để đợi thời gian chờ.
+
+Khi hết thời gian chờ, các chức năng này sẽ được thực thi và trả về kết quả. Nếu bạn cần thực thi một chức năng sau một khoảng thời gian nhất định, bạn có thể sử dụng hàm setTimeout với đối số đầu tiên là một hàm callback và đối số thứ hai là thời gian chờ tính bằng mili giây. Ví dụ, để thực thi một hàm callback sau 1 giây, bạn có thể sử dụng:
+
+```js
+setTimeout(() => {
+    // Hàm callback sẽ được thực thi sau 1 giây
+}, 1000);
+```
+
+Tương tự, nếu bạn cần thực thi một chức năng lặp đi lặp lại sau một khoảng thời gian nhất định, bạn có thể sử dụng hàm setInterval với đối số đầu tiên là một hàm callback và đối số thứ hai là thời gian chờ tính bằng mili giây. Ví dụ, để thực thi một hàm callback lặp đi lặp lại sau mỗi 2 giây, bạn có thể sử dụng:
+
+```js
+setInterval(() => {
+    // Hàm callback sẽ được thực thi sau mỗi 2 giây
+}, 2000);
+```
+
+Việc sử dụng các hàm setTimeout và setInterval là rất quan trọng trong Node.js, vì chúng cho phép bạn chạy các tác vụ sau một khoảng thời gian nhất định, giúp cho việc lập trình trở nên linh hoạt hơn. Tuy nhiên, bạn cần phải cẩn thận khi sử dụng chúng, vì sẽ có tác động đến hiệu suất của ứng dụng nếu không sử dụng đúng cách.
+
+## Chạy I/O
+
+Giai đoạn "Bị chặn bởi I/O" trong vòng đời của Node.js xảy ra khi một quá trình chờ đợi các hoạt động I/O được thực hiện, ví dụ như đọc hoặc ghi dữ liệu vào đĩa hoặc kết nối mạng. Node.js sẽ không tiếp tục thực thi các lệnh trong mã cho đến khi các hoạt động I/O hoàn thành. Trong khi chờ đợi, Node.js sẽ chuyển sang xử lý các sự kiện khác trong Event Loop. Khi các hoạt động I/O hoàn thành, Node.js sẽ đưa các hàm callback tương ứng vào hàng đợi của Event Loop để được thực thi.
+
+## Thực thi mã tiếp theo
+
+Sau khi Event Loop đã chạy xong tất cả các callbacks, timers và I/O, Node.js sẽ tiếp tục thực thi mã JavaScript tiếp theo trong file. Nếu không có mã nào để thực thi, Node.js sẽ chờ đợi cho đến khi có một sự kiện được gọi để khởi động lại Event Loop và chạy lại các giai đoạn trên. Quá trình này sẽ tiếp tục cho đến khi ứng dụng được đóng lại hoặc bị lỗi.
