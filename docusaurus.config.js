@@ -78,6 +78,12 @@ const config = {
                     },
                     {
                         type: "docSidebar",
+                        sidebarId: "nodejs",
+                        position: "right",
+                        label: "Nodejs",
+                    },
+                    {
+                        type: "docSidebar",
                         sidebarId: "reactjs",
                         position: "right",
                         label: "Reactjs",

@@ -1,0 +1,132 @@
+---
+id: set-up
+sidebar_position: 1
+---
+
+# Thiết lập môi trường
+
+## Cài đặt các gói thư viện cần thiết
+
+1. Đầu tiên, tạo một file mới trong thư mục gốc của dự án, có thể đặt tên là **index.js**
+2. Để sử dụng các module được import vào trong file, cần cài đặt chúng bằng npm hoặc yarn. Để cài đặt các module cần thiết cho đoạn code trên, mở terminal và chạy lệnh sau:
+
+```bash
+npm install express mongoose morgan dotenv
+```
+
+hoặc
+
+```bash
+yarn add express mongoose morgan dotenv
+```
+
+3. Tiếp theo, trong file **index.js**, import các module.
+
+```js
+import express from "express";
+import mongoose from "mongoose";
+import morgan from "morgan";
+import * as dotenv from "dotenv";
+```
+
+Trong đó:
+
+-   **express** được sử dụng để tạo ra một ứng dụng web Node.js.
+-   **mongoose** được sử dụng để kết nối tới MongoDB.
+-   **morgan được** sử dụng để logging request.
+-   **dotenv** được sử dụng để load các biến môi trường từ file .env.
+
+4. Tiếp theo, khởi tạo ứng dụng express.
+
+```js
+const app = express();
+dotenv.config();
+```
+
+5. Kết nối tới database MongoDB.
+
+```js
+mongoose
+    .connect("mongodb://localhost:27017/DATABASE_NAME")
+    .then(() => console.log("Kết nối db thành công"))
+    .catch((error) => console.log("Kết nối DB không thành công", error));
+```
+
+6. Sử dụng middleware express.json() để parse request body và morgan để logging
+
+```js
+app.use(express.json());
+app.use(morgan("tiny"));
+```
+
+-   Middleware express.json() được sử dụng để parse JSON trong request body của client gửi lên và gắn kết vào đối tượng req.body cho phép dễ dàng truy xuất dữ liệu gửi lên. Đối với một ứng dụng Express, việc parse dữ liệu từ JSON trong request body là rất phổ biến, vì vậy hầu hết các ứng dụng đều sẽ sử dụng middleware này.
+
+-   Middleware morgan là một logger middleware cho Express. Nó giúp hiển thị các thông tin log của một request như method, đường dẫn URL, thời gian phản hồi và kích thước response. Việc logging giúp cho việc giám sát ứng dụng, phát hiện lỗi và debugging trở nên dễ dàng hơn.
+
+:::note Lưu ý
+express.json() được sử dụng trước morgan để đảm bảo việc parse request body của client được thực hiện trước khi log được ghi nhận. Ngoài ra, morgan("tiny") được sử dụng để thiết lập logger theo kiểu "tiny" giúp hiển thị các thông tin cơ bản của một request.
+:::
+
+7. Tạo một route đơn giản để kiểm tra xem ứng dụng đã hoạt động chưa.
+
+```js
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
+```
+
+8. Khởi chạy ứng dụng.
+
+```js
+app.listen(8080, () => {
+    console.log("Server is running on port 8080");
+});
+```
+
+9. Chạy lệnh sau để khởi chạy ứng dụng:
+
+```bash
+node index.js
+```
+
+## Tạo biến môi trường
+
+Thiết lập môi trường: Bạn có thể sử dụng file .env để định nghĩa các biến môi trường cần thiết cho project của mình. Ví dụ: PORT cho cổng mà server của bạn sẽ lắng nghe, MONGODB_URI cho địa chỉ của cơ sở dữ liệu MongoDB, JWT_SECRET cho mã bí mật của JSON Web Token, vv.
+
+1. Bước đầu tiên là cài đặt thư viện dotenv bằng lệnh sau trong terminal:
+
+```bash
+npm install dotenv
+```
+
+2. Tạo một file .env trong thư mục gốc của project, chứa các biến môi trường cần thiết như sau:
+
+```bash
+PORT=8080
+```
+
+3. Trong file JavaScript, import dotenv và sử dụng phương thức config() để cấu hình biến môi trường:
+
+```js
+dotenv.config();
+hoặc;
+require("dotenv").config();
+```
+
+4. Sử dụng biến môi trường trong code của bạn bằng cách truy cập thuộc tính của đối tượng process.env với tên biến:
+
+```js
+const port = process.env.PORT;
+```
+
+5. Sử dụng biến môi trường trong phương thức app.listen():
+
+```js
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+```
+
+:::note Lưu ý
+Lưu ý: Đảm bảo rằng file .env không được đưa vào git repository hoặc chia sẻ với bất kỳ ai. Sử dụng gitignore để bảo vệ thông tin riêng tư của bạn.
+:::
