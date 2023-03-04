@@ -1,30 +1,81 @@
 ---
 id: set-up
-sidebar_position: 10
+sidebar_position: 1
+title: "Tạo và thiết lập môi trường"
 ---
 
-# Thiết lập môi trường
+Trong bài hướng dẫn này, chúng ta sẽ tạo một RESTful API đơn giản để quản lý danh sách sản phẩm. Chúng ta sẽ tạo các endpoint để lấy danh sách sản phẩm, thêm, sửa và xóa sản phẩm.
+
+## Khởi tạo project
+
+Trước tiên, chúng ta cần tạo một project mới. Mở command line và gõ lệnh sau:
+
+```bash
+mkdir nodejs-api
+cd nodejs-api
+npm init -y
+```
+
+## Cấu trúc thư Mục
+
+Dưới đây là một cấu trúc thư mục chúng ta sử dụng Node.js với Express để viết RESTful API:
+
+```bash
+├── config
+│   ├── config.js
+│   ├── database.js
+├── controllers
+│   ├── auth.js
+│   └── product.js
+├── models
+│   ├── category.js
+│   └── product.js
+├── routes
+│   ├── auth.js
+│   └── product.js
+├── utils
+│   ├── logger.js
+│   └── validation.js
+├── app.js
+├── package.json
+└── README.md
+```
+
+-   Thư mục **config**: chứa các file cấu hình như kết nối cơ sở dữ liệu, cấu hình cho các thư viện bên thứ ba...
+
+-   Thư mục **controllers**: chứa các file điều khiển logic xử lý cho các yêu cầu của người dùng.
+
+-   Thư mục **models**: chứa các file mô hình dữ liệu (model) để định nghĩa cấu trúc dữ liệu và tương tác với cơ sở dữ liệu.
+
+-   Thư mục **routes**: chứa các file định nghĩa router và các xử lý tương ứng cho các yêu cầu của người dùng.
+
+-   Thư mục **utils** chứa các file hỗ trợ như module logger để ghi log hoạt động của ứng dụng, module validation để xác thực dữ liệu nhập vào...
+
+-   File **app.js** là file chính để cấu hình và khởi tạo ứng dụng.
+
+-   File **package.json** chứa thông tin về các package cần thiết để chạy ứng dụng.
 
 ## Cài đặt các gói thư viện cần thiết
 
-1. Đầu tiên, tạo một file mới trong thư mục gốc của dự án, có thể đặt tên là **index.js**
-2. Để sử dụng các module được import vào trong file, cần cài đặt chúng bằng npm hoặc yarn. Để cài đặt các module cần thiết cho đoạn code trên, mở terminal và chạy lệnh sau:
+Sau khi tạo được project, chúng ta cần cài đặt các package cần thiết như sau:
 
 ```bash
-npm install express mongoose morgan dotenv
+npm install express mongoose dotenv --save
+npm install morgan nodemon --save-dev
+``
 ```
 
 hoặc
 
 ```bash
-yarn add express mongoose morgan dotenv
+yarn add express dotenv
+yarn add morgan nodemon --dev
 ```
 
 3. Tiếp theo, trong file **index.js**, import các module.
 
 ```js
 import express from "express";
-import mongoose from "mongoose";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
 ```
@@ -32,7 +83,6 @@ import * as dotenv from "dotenv";
 Trong đó:
 
 -   **express** được sử dụng để tạo ra một ứng dụng web Node.js.
--   **mongoose** được sử dụng để kết nối tới MongoDB.
 -   **morgan được** sử dụng để logging request.
 -   **dotenv** được sử dụng để load các biến môi trường từ file .env.
 
@@ -43,16 +93,7 @@ const app = express();
 dotenv.config();
 ```
 
-5. Kết nối tới database MongoDB.
-
-```js
-mongoose
-    .connect("mongodb://localhost:27017/DATABASE_NAME")
-    .then(() => console.log("Kết nối db thành công"))
-    .catch((error) => console.log("Kết nối DB không thành công", error));
-```
-
-6. Sử dụng middleware express.json() để parse request body và morgan để logging
+5. Sử dụng middleware express.json() để parse request body và morgan để logging
 
 ```js
 app.use(express.json());
@@ -67,7 +108,7 @@ app.use(morgan("tiny"));
 express.json() được sử dụng trước morgan để đảm bảo việc parse request body của client được thực hiện trước khi log được ghi nhận. Ngoài ra, morgan("tiny") được sử dụng để thiết lập logger theo kiểu "tiny" giúp hiển thị các thông tin cơ bản của một request.
 :::
 
-7. Tạo một route đơn giản để kiểm tra xem ứng dụng đã hoạt động chưa.
+6. Tạo một route đơn giản để kiểm tra xem ứng dụng đã hoạt động chưa.
 
 ```js
 app.get("/", (req, res) => {
@@ -75,7 +116,7 @@ app.get("/", (req, res) => {
 });
 ```
 
-8. Khởi chạy ứng dụng.
+7. Khởi chạy ứng dụng.
 
 ```js
 app.listen(8080, () => {
@@ -83,10 +124,10 @@ app.listen(8080, () => {
 });
 ```
 
-9. Chạy lệnh sau để khởi chạy ứng dụng:
+8. Chạy lệnh sau để khởi chạy ứng dụng:
 
 ```bash
-node index.js
+nodemon index.js
 ```
 
 ## Tạo biến môi trường

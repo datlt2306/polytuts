@@ -1,0 +1,54 @@
+---
+sidebar_position: 2
+title: "Thiết lập router"
+---
+
+Chào bạn! Dưới đây là một hướng dẫn từng bước để tạo router trong ứng dụng ExpressJS của bạn.
+
+## Tạo file router
+
+Đầu tiên, hãy tạo một file mới trong thư mục "routes" của ứng dụng của bạn. Tên file này sẽ phù hợp với chức năng của router. Ví dụ, nếu bạn đang tạo một router để quản lý các sản phẩm trong cửa hàng của mình, bạn có thể đặt tên file là "product.js".
+
+## Khởi tạo Express Router
+
+Tiếp theo, bạn sẽ khởi tạo một đối tượng Router từ thư viện ExpressJS.
+
+```js
+import express from "express";
+
+const router = express.Router();
+```
+
+## Thêm các routes
+
+Thêm các routes bằng cách sử dụng các phương thức của đối tượng Router. Ví dụ, nếu bạn muốn tạo một tuyến đường GET để lấy thông tin về tất cả các sản phẩm trong cửa hàng của mình, bạn có thể thêm mã sau vào file "product.js" của bạn:
+
+```js
+router.get("/products", (req, res) => {
+    // Xử lý yêu cầu và trả về kết quả
+});
+```
+
+## Xuất router
+
+Sau khi bạn đã thêm tất cả các route cần thiết vào đối tượng Router, hãy xuất nó để có thể sử dụng trong file app.js chính của bạn.
+
+```js
+export default router;
+```
+
+## Sử dụng router
+
+Cuối cùng, hãy sử dụng router trong file app.js của bạn bằng cách sử dụng phương thức use của đối tượng Express. Ví dụ:
+
+```js
+import productRouter from "./routes/product";
+
+app.use("/api", productRouter);
+```
+
+:::note
+Lưu ý rằng đường dẫn /api được thêm vào trước tất cả các tuyến đường trong router, do đó các tuyến đường sẽ trở thành /api/products, /api/products/:id, và còn nữa, tùy thuộc vào những gì bạn thêm vào router.
+:::
+
+Với các bước trên, bạn đã tạo thành công một router đơn giản trong ứng dụng ExpressJS của mình.
