@@ -1,0 +1,132 @@
+---
+sidebar_position: 1
+title: Giới thiệu
+---
+
+Nội dung:
+
+1. Nodejs là gì?
+2. Tại sao phải sử dụng nodejs?
+3. Nodejs hoạt động ra sao?
+4. Các kiến thức cần chuẩn bị?
+5. Cài đặt và cho một vài ví dụ về Nodejs
+
+## Nodejs là gì?
+
+Node.js là một nền tảng phát triển ứng dụng mã nguồn mở được xây dựng trên JavaScript Engine (V8 Engine) của Google Chrome. Nó cho phép chạy mã JavaScript ở phía máy chủ, cung cấp khả năng lập trình ứng dụng mạnh mẽ và linh hoạt.
+
+:::info V8 Engine là gì?
+V8 engine là một công cụ biên dịch mã nguồn Javascript được sử dụng rộng rãi trong các trình duyệt web và nền tảng Node.js. V8 engine được phát triển bởi Google, sử dụng các kỹ thuật tối ưu hóa mã để tăng hiệu suất hoạt động của mã Javascript.
+:::
+
+## Tại sao phải sử dụng Nodejs?
+
+Có nhiều lý do mà Node.js trở thành một nền tảng phát triển phổ biến trong thế giới phần mềm và website. Dưới đây là những lý do chính tại sao chúng ta nên sử dụng Node.js:
+
+1. Sử dụng JavaScript để xây dựng cả phía server và phía client của ứng dụng.
+2. Hỗ trợ đa nhiệm và xử lý không đồng bộ cho hiệu suất tốt.
+3. Dễ dàng xây dựng các ứng dụng đa nền tảng.
+4. Hệ sinh thái phong phú với hàng ngàn các module và package có sẵn.
+5. Cộng đồng mạnh mẽ và đầy đủ các tài nguyên hỗ trợ.
+6. Hiệu suất cao với V8 engine.
+
+Tóm lại, Node.js là một nền tảng lập trình rất mạnh mẽ và được sử dụng rộng rãi trong cả phát triển web, mobile và desktop. Việc học Node.js giúp cho các nhà phát triển có thể tạo ra các ứng dụng đa nền tảng, xử lý đa nhiệm và có hiệu suất cao.
+
+## Nodejs hoạt động ra sao?
+
+Node.js sử dụng mô hình đơn luồng với Event Loop để xử lý các yêu cầu không đồng bộ, giúp tối ưu hóa hiệu suất và độ ổn định của ứng dụng. Nó cũng cung cấp các thư viện mã nguồn mở để hỗ trợ cho việc xây dựng ứng dụng mạng và xử lý dữ liệu như: Express, Socket.IO, Mongoose, Lodash, Async, ...
+
+## Các kiến thức cần chuẩn bị
+
+Để học Node.js, cần chuẩn bị những kiến thức cơ bản sau đây:
+
+1. HTML, CSS và JavaScript: để tạo giao diện cho ứng dụng web.
+2. Kiến thức về mô hình Client-Server: để hiểu kiến trúc Client-Server và tương tác thông qua HTTP.
+3. Khái niệm cơ bản về lập trình hướng đối tượng: để sử dụng tính năng lập trình hướng đối tượng.
+4. Kiến thức cơ bản về mạng: để hiểu về các giao thức, phương thức mạng và địa chỉ IP.
+5. Kiến thức cơ bản về cơ sở dữ liệu: để kết nối và thao tác với cơ sở dữ liệu.
+6. Kiến thức cơ bản về hệ thống điều khiển phiên bản (version control system): để quản lý mã nguồn trong các dự án phát triển phần mềm.
+
+Đây chỉ là những kiến thức cơ bản, tuy nhiên bạn có thể tự học Nodejs mà không cần phải hiểu hết tất cả các kiến thức trên. Tuy nhiên, có được kiến thức nền tảng này sẽ giúp bạn hiểu rõ hơn về cách Node.js hoạt động và phát triển các ứng dụng Node.js tốt hơn.
+
+## Cài đặt
+
+Để cài đặt Node.js, bạn có thể truy cập trang web chính thức của Node.js tại địa chỉ https://nodejs.org/ và tải xuống phiên bản Node.js phù hợp với hệ điều hành của bạn. Sau khi tải xuống, bạn cài đặt Node.js bằng cách chạy tệp cài đặt và thực hiện các bước cài đặt được hướng dẫn trên màn hình.
+
+Sau khi đã cài đặt Node.js thành công, bạn có thể kiểm tra phiên bản hiện tại của Node.js bằng cách mở terminal hoặc cmd và gõ lệnh:
+
+```bash
+node -v
+```
+
+Nếu phiên bản hiện tại của Node.js được hiển thị, nghĩa là cài đặt đã thành công.
+
+Ngoài ra, bạn cũng có thể kiểm tra phiên bản npm (Node Package Manager) bằng cách gõ lệnh:
+
+```bash
+npm -v
+```
+
+Nếu phiên bản hiện tại của npm được hiển thị, nghĩa là npm đã được cài đặt thành công.
+
+## Ví dụ
+
+Ví dụ đầu tiên về Node.js là viết một chương trình đơn giản để in ra màn hình chuỗi "Hello, world!".
+
+```bash
+console.log("Hello, world!");
+```
+
+Đoạn mã trên sử dụng hàm console.log() để in ra chuỗi "Hello, world!" lên màn hình console. Để chạy đoạn mã trên, bạn có thể lưu đoạn mã vào một tệp văn bản có đuôi là .js, ví dụ hello.js, và chạy lệnh sau trong terminal:
+
+```bash
+node hello.js
+```
+
+Kết quả sẽ là "Hello, world!" được in ra trên màn hình console.
+
+Một ví dụ khác để hiểu rõ hơn về Node.js là tạo một máy chủ web đơn giản. Đoạn mã sau đây tạo một máy chủ web đơn giản trên cổng 8080 và trả về chuỗi "Hello, world!" khi truy cập vào địa chỉ http://localhost:8080.
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/plain");
+    res.end("Hello, world!");
+});
+
+server.listen(8080, () => {
+    console.log("Server running on port 8080");
+});
+```
+
+**Giải thích cho đoạn mã trên**:
+
+-   Import module http bằng cách sử dụng lệnh require, Điều này cho phép chúng ta sử dụng các phương thức được cung cấp bởi module **http** trong Node.js.
+
+```js
+const http = require("http");
+```
+
+-   Tạo một server HTTP bằng cách sử dụng phương thức **createServer** của module http. Server sẽ trả về một response với mã trạng thái 200 và header Content-Type là text/plain. Nội dung của response là chuỗi 'Hello, world!'.
+
+```js
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/plain");
+    res.end("Hello, world!");
+});
+```
+
+-   Khởi động server và lắng nghe các kết nối đến từ client bằng cách sử dụng phương thức listen của đối tượng server. Server sẽ lắng nghe các kết nối đến trên cổng 8080 và khi có một kết nối đến, server sẽ ghi log "Server running on port 8080".
+
+```js
+server.listen(8080, () => {
+    console.log("Server running on port 8080");
+});
+```
+
+-   Khi server nhận được một request từ client, nó sẽ gửi một response trả về cho client. Trong ví dụ này, response trả về chỉ đơn giản là chuỗi "Hello, world!".
+
+Trên đây là một số ví dụ đơn giản để giúp bạn bắt đầu với Node.js. Với những ví dụ đơn giản này, bạn có thể nắm được cách hoạt động của Node.js và bắt đầu phát triển các ứng dụng web hoặc các ứng dụng khác trên Node.js.
