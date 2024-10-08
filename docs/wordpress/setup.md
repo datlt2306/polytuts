@@ -23,7 +23,7 @@ Hôm nay, chúng ta sẽ cùng nhau bắt tay vào một hành trình thú vị:
 ## 2. Tạo thư mục theme
 
 -   Điều hướng đến `wp-content/themes/` trong thư mục cài đặt WordPress của bạn.
--   Tạo một thư mục mới cho theme của bạn, ví dụ: `fictional-university-theme`.
+-   Tạo một thư mục mới cho theme của bạn, ví dụ: `webops-agency`.
 
 ## 3. Tạo file `style.css`
 
@@ -33,14 +33,12 @@ Hôm nay, chúng ta sẽ cùng nhau bắt tay vào một hành trình thú vị:
 ```css
 /*
 Theme Name: Fictional University Theme
-Theme URI: http://example.com/fictional-university-theme
+Theme URI: http://webopsagency.com
 Author: Your Name
-Author URI: http://example.com
+Author URI:  http://webopsagency.com
 Description: A custom WordPress theme.
 Version: 1.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: fictional-university-theme
+Text Domain: webops-agency
 */
 ```
 
@@ -106,7 +104,7 @@ function fictional_university_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     register_nav_menus(array(
-    'primary' => \_\_('Primary Menu', 'fictional-university-theme'),
+    'primary' => \_\_('Primary Menu', 'webops-agency'),
     ));
 }
 add_action('after_setup_theme', 'fictional_university_theme_setup');
