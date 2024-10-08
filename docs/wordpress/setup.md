@@ -4,7 +4,7 @@ title: Cài đặt
 sidebar_position: 2
 ---
 
-# Hướng dẫn tạo một theme WordPress từ đầu
+# Hướng dẫn tạo theme WordPress từ đầu
 
 Hôm nay, chúng ta sẽ cùng nhau bắt tay vào một hành trình thú vị: tạo ra một theme WordPress của riêng mình. Không cần chần chừ nữa, hãy cùng bắt đầu ngay thôi!
 
