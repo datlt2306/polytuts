@@ -8,12 +8,17 @@ sidebar_position: 2
 
 Hôm nay, chúng ta sẽ cùng nhau bắt tay vào một hành trình thú vị: tạo ra một theme WordPress của riêng mình. Không cần chần chừ nữa, hãy cùng bắt đầu ngay thôi!
 
-1. [Mục tiêu](#mục-tiêu)
-2. [Bước 1: Tạo nhiều bài đăng blog](#bước-1-tạo-nhiều-bài-đăng-blog)
-3. [Bước 2: Tạo vòng lặp trong PHP](#bước-2-tạo-vòng-lặp-trong-php)
-4. [Bước 3: Tạo liên kết cho tiêu đề bài đăng](#bước-3-tạo-liên-kết-cho-tiêu-đề-bài-đăng)
-5. [Bài tập](#bài-tập)
-6. [Tổng kết](#tổng-kết)
+1. [Thiết lập môi trường phát triển](#1-thiết-lập-môi-trường-phát-triển)
+2. [Tạo thư mục theme](#2-tạo-thư-mục-theme)
+3. [Tạo file `style.css`](#3-tạo-file-stylecss)
+4. [Tạo file `index.php`](#4-tạo-file-indexphp)
+5. [Kích hoạt theme của bạn](#5-kích-hoạt-theme-của-bạn)
+6. [Tạo các file template bổ sung](#6-tạo-các-file-template-bổ-sung)
+7. [Thêm file `functions.php`](#7-thêm-file-functionsphp)
+8. [Tùy chỉnh và mở rộng](#8-tùy-chỉnh-và-mở-rộng)
+9. [Kiểm tra theme của bạn](#9-kiểm-tra-theme-của-bạn)
+10. [Bài Tập](#bài-tập)
+11. [Tổng kết](#tổng-kết)
 
 ## 1. Thiết lập môi trường phát triển
 
