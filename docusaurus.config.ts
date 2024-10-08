@@ -72,15 +72,9 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          sidebarId: 'javascriptCoBanSidebar',
+          sidebarId: 'javascriptSidebar',
           position: 'left',
-          label: 'Javascript cơ bản',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'wordpressSidebar',
-          position: 'left',
-          label: 'WordPress',
+          label: 'Javascript',
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
