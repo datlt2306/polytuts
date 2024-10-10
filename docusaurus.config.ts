@@ -66,15 +66,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
-        {
-          type: 'docSidebar',
           sidebarId: 'javascriptSidebar',
           position: 'left',
           label: 'Javascript',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'wordpressSidebar',
+          position: 'left',
+          label: 'Wordpress',
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
@@ -132,7 +132,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java', 'python', 'php'],
+      additionalLanguages: ['php'],
     },
   } satisfies Preset.ThemeConfig,
 };

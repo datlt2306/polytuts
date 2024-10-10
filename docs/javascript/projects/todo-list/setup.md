@@ -1,7 +1,7 @@
 ---
 id: setup
 title: Cài đặt Dự án Javascirpt
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Cài đặt Dự án Javascirpt
